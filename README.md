@@ -1,9 +1,12 @@
-# webapp-tutorial-scaffold
+# webapp-tutorial-using-web3react
 
 Using: 
 
 - Next.js
 - Chakra UI
+
+- Web3-React
+- SWR
 
 ---
 
