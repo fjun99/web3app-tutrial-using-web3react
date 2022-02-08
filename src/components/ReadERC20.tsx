@@ -36,14 +36,18 @@ useEffect( () => {
     if(!(active && account && library)) return
 
     const erc20 = new Contract(addressContract, abi, library);
-    erc20.symbol().then((result:string)=>{
-        setSymbol(result)
-    }).catch('error', console.error)
+    library.getCode(addressContract).then((result:string)=>{
+      //check whether it is a contract
+      if(result === '0x') return
 
-    erc20.totalSupply().then((result:string)=>{
-        setTotalSupply(formatEther(result))
-    }).catch('error', console.error);
+      erc20.symbol().then((result:string)=>{
+          setSymbol(result)
+      }).catch('error', console.error)
 
+      erc20.totalSupply().then((result:string)=>{
+          setTotalSupply(formatEther(result))
+      }).catch('error', console.error);
+    })
 //called only when changed to active
 },[active])
 
@@ -68,10 +72,10 @@ useEffect(() => {
     })
 
     // remove listener when the component is unmounted
-    // return () => {
-    //     library.removeAllListeners(toMe)
-    //     library.removeAllListeners(fromMe)
-    // }
+    return () => {
+        library.removeAllListeners(toMe)
+        library.removeAllListeners(fromMe)
+    }
     
     // trigger the effect only on component mount
   }, [active,account])
