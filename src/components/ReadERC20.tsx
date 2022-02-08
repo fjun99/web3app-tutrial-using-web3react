@@ -56,22 +56,22 @@ useEffect(() => {
     console.log(`listening for Transfer...`)
 
     const fromMe = erc20.filters.Transfer(account, null)
-    library.on(fromMe, (from, to, amount, event) => {
+    erc20.on(fromMe, (from, to, amount, event) => {
         console.log('Transfer|sent', { from, to, amount, event })
         mutate(undefined, true)
     })
 
     const toMe = erc20.filters.Transfer(null, account)
-    library.on(toMe, (from, to, amount, event) => {
+    erc20.on(toMe, (from, to, amount, event) => {
         console.log('Transfer|received', { from, to, amount, event })
         mutate(undefined, true)
     })
 
     // remove listener when the component is unmounted
-    return () => {
-        library.removeAllListeners(toMe)
-        library.removeAllListeners(fromMe)
-    }
+    // return () => {
+    //     library.removeAllListeners(toMe)
+    //     library.removeAllListeners(fromMe)
+    // }
     
     // trigger the effect only on component mount
   }, [active,account])
