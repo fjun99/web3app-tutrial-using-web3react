@@ -73,8 +73,8 @@ useEffect(() => {
 
     // remove listener when the component is unmounted
     return () => {
-        library.removeAllListeners(toMe)
-        library.removeAllListeners(fromMe)
+        erc20.removeAllListeners(toMe)
+        erc20.removeAllListeners(fromMe)
     }
     
     // trigger the effect only on component mount
