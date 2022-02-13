@@ -35,7 +35,7 @@ export default function ReadERC20(props:Props){
 useEffect( () => {
     if(!(active && account && library)) return
 
-    const erc20 = new Contract(addressContract, abi, library);
+    const erc20:Contract = new Contract(addressContract, abi, library);
     library.getCode(addressContract).then((result:string)=>{
       //check whether it is a contract
       if(result === '0x') return
@@ -54,7 +54,7 @@ useEffect( () => {
 useEffect(() => {
     if(!(active && account && library)) return
 
-    const erc20 = new Contract(addressContract, abi, library)
+    const erc20:Contract = new Contract(addressContract, abi, library)
 
     // listen for changes on an Ethereum address
     console.log(`listening for Transfer...`)
