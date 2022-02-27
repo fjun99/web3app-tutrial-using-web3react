@@ -1,12 +1,25 @@
 # webapp-tutorial-using-web3react
 
-Using: 
+Stack Used: 
 
 - Next.js
 - Chakra UI
 
 - Web3-React
 - SWR
+
+## Usage
+
+local testnet
+
+1) run local testnet and deploy smart contract
+2) change ./contsant.ts
+
+```
+export const addressContract = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+```
+
+
 
 ---
 

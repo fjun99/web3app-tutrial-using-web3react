@@ -9,9 +9,10 @@ import ETHBalance from 'components/ETHBalance'
 import ETHBalanceSWR from 'components/ETHBalanceSWR'
 import ReadERC20 from 'components/ReadERC20'
 import TransferERC20 from 'components/TransferERC20'
+import { addressContract }  from '../constants'
 
 const Home: NextPage = () => {
-  const addressContract='0x5fbdb2315678afecb367f032d93f642f64180aa3'
+  // const addressContract='0x5fbdb2315678afecb367f032d93f642f64180aa3'
 
   return (
     <>
