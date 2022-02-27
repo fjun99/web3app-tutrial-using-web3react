@@ -7,9 +7,10 @@ import { Text, Button } from '@chakra-ui/react'
 import ConnectMetamask from 'components/ConnectMetamask'
 import ETHBalance from 'components/ETHBalance'
 import ETHBalanceSWR from 'components/ETHBalanceSWR'
-import ReadERC20 from 'components/ReadERC20'
+import ReadERC721 from 'components/ReadERC721'
 import TransferERC20 from 'components/TransferERC20'
-import { addressContract }  from '../constants'
+import { addressNFTContract, addressMarketContract }  from '../constants'
+import ReadNFTMarket from 'components/ReadNFTMarket'
 
 const Home: NextPage = () => {
   // const addressContract='0x5fbdb2315678afecb367f032d93f642f64180aa3'
@@ -25,7 +26,17 @@ const Home: NextPage = () => {
 
       <VStack>
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
-          <Heading my={4}  fontSize='xl'>ETH Balance</Heading>
+          <Heading my={4}  fontSize='xl'>NFT Market - all</Heading>
+          <ReadNFTMarket addressContract={addressMarketContract} />
+        </Box>
+
+        <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
+          <Heading my={4}  fontSize='xl'>NFT Market - my created</Heading>
+          <ETHBalance />
+        </Box>
+
+        <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
+          <Heading my={4}  fontSize='xl'>NFT Market - my brought</Heading>
           <ETHBalance />
         </Box>
 
@@ -35,14 +46,10 @@ const Home: NextPage = () => {
         </Box>
 
         <Box  my={4} p={4} w='100%' borderWidth="1px" borderRadius="lg">
-          <Heading my={4}  fontSize='xl'>ClassToken: ERC20 Smart Contract</Heading>
-          <ReadERC20 addressContract={addressContract} />
+          <Heading my={4}  fontSize='xl'>BadgeToken: ERC721 Smart Contract Info</Heading>
+          <ReadERC721 addressContract={addressNFTContract} />
         </Box>
 
-        <Box  my={4} p={4} w='100%' borderWidth="1px" borderRadius="lg">
-          <Heading my={4}  fontSize='xl'>Transfer ClassToken ERC20 token</Heading>
-          <TransferERC20 addressContract={addressContract} />
-        </Box>
       </VStack>
     </>
   )
