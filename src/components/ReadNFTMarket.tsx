@@ -3,8 +3,9 @@ import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import {Contract} from "@ethersproject/contracts";
 import  CardERC721  from "./CardERC721"
-import {Grid, GridItem, Box} from "@chakra-ui/react"
+import {Grid, GridItem, Box, Text} from "@chakra-ui/react"
 import useSWR from 'swr'
+import { ethers } from 'ethers';
 // import { fetcher } from "utils/fetcher"
 
 interface Props {
@@ -54,6 +55,7 @@ useEffect( () => {
         case 2:
           market.fetchMyCreatedItems({from:account}).then((items:any)=>{
             setItems(items)
+            console.log(items)
           })    
             break;
         default:
@@ -62,18 +64,27 @@ useEffect( () => {
     })
 
     //called only when changed to active
-},[active])
+},[active,account])
 
+const state = ["On Sale","Sold","Inactive"]
 
 return (
   <Grid templateColumns='repeat(3, 1fr)' gap={0} w='100%'>
     {items
-    ?items.map((item:any)=>{
-      return(
-        <GridItem key={item.id} >
-          <CardERC721 addressContract={item.nftContract} tokenId={item.tokenId} ></CardERC721>
-        </GridItem>)
-    })
+    ? 
+    (items.length ==0)
+      ?<Box>no item</Box>
+      :items.map((item:any)=>{
+        return(
+          <GridItem key={item.id} >
+            <CardERC721 addressContract={item.nftContract} tokenId={item.tokenId} ></CardERC721>
+            <Text fontSize='sm' px={5} pb={1}> {state[item.state]} </Text> 
+            {((item.seller == account && item.buyer == ethers.constants.AddressZero) || (item.buyer == account))
+            ?<Text fontSize='sm' px={5} pb={1}> owned by you </Text> 
+            :<Text></Text>
+            }
+          </GridItem>)
+      })
     :<Box></Box>}
   </Grid>
   )
