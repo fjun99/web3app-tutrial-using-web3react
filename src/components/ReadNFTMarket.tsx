@@ -3,10 +3,10 @@ import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import {Contract} from "@ethersproject/contracts";
 import  CardERC721  from "./CardERC721"
-import {Grid, GridItem, Box, Text} from "@chakra-ui/react"
+import {Grid, GridItem, Box, Text, Button} from "@chakra-ui/react"
 import useSWR from 'swr'
 import { ethers } from 'ethers';
-// import { fetcher } from "utils/fetcher"
+import { addressNFTContract, addressMarketContract }  from '../constants'
 
 interface Props {
     addressContract: string,
@@ -47,17 +47,16 @@ useEffect( () => {
           })    
           break;
         case 1:
-          console.log(account)
           market.fetchMyPurchasedItems({from:account}).then((items:any)=>{
             setItems(items)
           })    
-            break;
+          break;
         case 2:
           market.fetchMyCreatedItems({from:account}).then((items:any)=>{
             setItems(items)
             console.log(items)
           })    
-            break;
+          break;
         default:
       }
 
@@ -66,10 +65,33 @@ useEffect( () => {
     //called only when changed to active
 },[active,account])
 
+
+async function buyInNFTMarket(event:React.FormEvent) {
+  event.preventDefault()
+
+  // console.log(event.target.value)
+  const itemId = event.target.value
+
+  if(!(active && account && library)) return
+
+  //TODO make check beforehand
+  // Import **
+  // Refesh page 
+
+  const market:Contract = new Contract(props.addressContract, abi, library.getSigner());
+  const auctionPrice = ethers.utils.parseUnits('1', 'ether')
+  market.createMarketSale(
+      addressNFTContract, 
+      itemId, 
+      { value: auctionPrice}
+    ).catch('error', console.error)
+}
+
 const state = ["On Sale","Sold","Inactive"]
 
 return (
   <Grid templateColumns='repeat(3, 1fr)' gap={0} w='100%'>
+
     {items
     ? 
     (items.length ==0)
@@ -83,9 +105,19 @@ return (
             ?<Text fontSize='sm' px={5} pb={1}> owned by you </Text> 
             :<Text></Text>
             }
+            <Box>{
+            (item.seller != account && item.state == 0)
+            ? 
+              // <form onSubmit={buyInNFTMarket} itemid={item.id}>
+                <Button width={220} type="submit" onClick={buyInNFTMarket} value={item.id}>Buy this!</Button>
+              // </form>
+            : <Text></Text>
+            }
+            </Box>
           </GridItem>)
       })
     :<Box></Box>}
   </Grid>
+
   )
 }
