@@ -27,17 +27,17 @@ const Home: NextPage = () => {
       <VStack>
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
           <Heading my={4}  fontSize='xl'>NFT Market - all</Heading>
-          <ReadNFTMarket addressContract={addressMarketContract} />
-        </Box>
-
-        <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
-          <Heading my={4}  fontSize='xl'>NFT Market - my created</Heading>
-          <ETHBalance />
+          <ReadNFTMarket addressContract={addressMarketContract} option={0} />
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
           <Heading my={4}  fontSize='xl'>NFT Market - my brought</Heading>
-          <ETHBalance />
+          <ReadNFTMarket addressContract={addressMarketContract} option={1} />
+        </Box>
+
+        <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
+          <Heading my={4}  fontSize='xl'>NFT Market - my created</Heading>
+          <ReadNFTMarket addressContract={addressMarketContract} option={2} />
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">

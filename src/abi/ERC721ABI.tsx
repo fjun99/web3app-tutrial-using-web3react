@@ -4,7 +4,7 @@ export const ERC721ABI = [
     "function balanceOf(address owner) view returns (uint256)",
     // "function totalSupply() view returns (uint256)",
     // "function decimals() view returns (uint8)",
-    "function tokenURI(uint256 tokenId) public view virtual override returns (string memory)",
+    "function tokenURI(uint256 tokenId) public view returns (string memory)",
     "function symbol() view returns (string)",
     // Authenticated Functions
     // "function transfer(address to, uint amount) returns (bool)",
