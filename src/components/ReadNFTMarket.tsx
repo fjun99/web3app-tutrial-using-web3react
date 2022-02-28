@@ -6,7 +6,7 @@ import  CardERC721  from "./CardERC721"
 import {Grid, GridItem, Box, Text, Button} from "@chakra-ui/react"
 import useSWR from 'swr'
 import { ethers } from 'ethers';
-import { addressNFTContract, addressMarketContract }  from '../constants'
+import { addressNFTContract, addressMarketContract }  from '../projectsetting'
 
 interface Props {
     addressContract: string,
@@ -74,7 +74,7 @@ async function buyInNFTMarket(event:React.FormEvent) {
 
   if(!(active && account && library)) return
 
-  //TODO make check beforehand
+  //TODO make check whether item is available beforehand
   // Import **
   // Refesh page 
 

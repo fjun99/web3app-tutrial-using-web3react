@@ -1,15 +1,12 @@
 // src/pages/index.tsx
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import NextLink from "next/link"
-import { VStack, HStack, Heading, Box, LinkOverlay, LinkBox} from "@chakra-ui/layout"
-import { Text, Button } from '@chakra-ui/react'
+import { VStack, HStack, Heading, Box } from "@chakra-ui/layout"
+import { Text } from '@chakra-ui/react'
 import ConnectMetamask from 'components/ConnectMetamask'
-import ETHBalance from 'components/ETHBalance'
 import ETHBalanceSWR from 'components/ETHBalanceSWR'
 import ReadERC721 from 'components/ReadERC721'
-import TransferERC20 from 'components/TransferERC20'
-import { addressNFTContract, addressMarketContract }  from '../constants'
+import { addressNFTContract, addressMarketContract }  from '../projectsetting'
 import ReadNFTMarket from 'components/ReadNFTMarket'
 
 const Home: NextPage = () => {
