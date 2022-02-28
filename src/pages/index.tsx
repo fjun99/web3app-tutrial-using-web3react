@@ -24,8 +24,8 @@ const Home: NextPage = () => {
           <Text fontSize='sm'>Prepare</Text>
         </Box>
         <Box px={3}>
-          <Text fontSize='sm'>1-6 by Account#0, 1-> Account1, 2-> Account#2</Text> 
-          <Text fontSize='sm'>7-9 by Account#1, 7,8 -> Account#0</Text>
+          <Text fontSize='sm'>1-6 by Account#0, 1- Account1, 2- Account#2</Text> 
+          <Text fontSize='sm'>7-9 by Account#1, 7,8 - Account#0</Text>
           <Text fontSize='sm'>In market: 3,4,5,9 (6 delist by Account#0)</Text>
         </Box>
         <Box px={3}>
