@@ -26,10 +26,10 @@ const Home: NextPage = () => {
         <Box px={3}>
           <Text fontSize='sm'>1-6 by Account#0, 1-> Account1, 2-> Account#2</Text> 
           <Text fontSize='sm'>7-9 by Account#1, 7,8 -> Account#0</Text>
-          <Text fontSize='sm'>In market: 3,4,5,9 (6 delist by Account#1)</Text>
+          <Text fontSize='sm'>In market: 3,4,5,9 (6 delist by Account#0)</Text>
         </Box>
         <Box px={3}>
-          <Text fontSize='sm'>Account#0:Buy 7,8, List:1-5, 6 delisted </Text>
+          <Text fontSize='sm'>Account#0:Buy 7,8, List:1-5( 6 delisted) </Text>
           <Text fontSize='sm'>Account#1:Buy 1, List:7-9 </Text>
           <Text fontSize='sm'>Account#2:Buy 2, List:n/a </Text>
         </Box>
