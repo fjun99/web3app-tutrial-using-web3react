@@ -10,7 +10,6 @@ function getLibrary(provider: any): Web3Provider {
   return library
 }
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>

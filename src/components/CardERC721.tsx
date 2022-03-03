@@ -1,11 +1,11 @@
+// components/CardERC721.tsx
 import React, { useEffect,useState } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import { Switch, Text} from '@chakra-ui/react'
+import { Box, Text} from '@chakra-ui/react'
 import useSWR from 'swr'
-import {ERC721ABI as abi} from "abi/ERC721ABI"
+import { ERC721ABI as abi} from "abi/ERC721ABI"
 import { BigNumber } from 'ethers'
-import {  Box } from '@chakra-ui/react'
 import { fetcher } from 'utils/fetcher'
 const base64 = require( "base-64")
 
