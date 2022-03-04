@@ -103,9 +103,7 @@ return (
             <Box>{
             (item.seller != account && item.state == 0)
             ? 
-              // <form onSubmit={buyInNFTMarket} itemid={item.id}>
                 <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Buy this!</Button>
-              // </form>
             : <Text></Text>
             }
             </Box>
