@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { Contract } from "@ethersproject/contracts";
 import { Grid, GridItem, Box, Text, Button } from "@chakra-ui/react"
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import useSWR from 'swr'
 import { addressNFTContract, addressMarketContract }  from '../projectsetting'
 import  CardERC721  from "./CardERC721"
@@ -66,15 +66,12 @@ useEffect( () => {
 },[active,account])
 
 
-async function buyInNFTMarket(event:React.FormEvent) {
+async function buyInNFTMarket(event:React.FormEvent,itemId:BigNumber) {
   event.preventDefault()
-
-  // console.log(event.target.value)
-  const itemId = event.target.value
 
   if(!(active && account && library)) return
 
-  //TODO make check whether item is available beforehand
+  //TODO check whether item is available beforehand
 
   const market:Contract = new Contract(addressMarketContract, abi, library.getSigner());
   const auctionPrice = ethers.utils.parseUnits('1', 'ether')
@@ -107,7 +104,7 @@ return (
             (item.seller != account && item.state == 0)
             ? 
               // <form onSubmit={buyInNFTMarket} itemid={item.id}>
-                <Button width={220} type="submit" onClick={buyInNFTMarket} value={item.id}>Buy this!</Button>
+                <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Buy this!</Button>
               // </form>
             : <Text></Text>
             }
