@@ -62,7 +62,7 @@ useEffect( () => {
 
     })
 
-    //called only when changed to active
+    //called only when changed to active and account changed
 },[active,account])
 
 
@@ -102,8 +102,7 @@ return (
             }
             <Box>{
             (item.seller != account && item.state == 0)
-            ? 
-                <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Buy this!</Button>
+            ? <Button width={220} type="submit" onClick={(e)=>buyInNFTMarket(e,item.id)}>Buy this!</Button>
             : <Text></Text>
             }
             </Box>
