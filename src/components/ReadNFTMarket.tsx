@@ -1,22 +1,22 @@
-import React, { useEffect,useState } from 'react';
+// components/ReadNFTMarket.tsx
+import React from 'react'
+import { useEffect,useState } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import {Contract} from "@ethersproject/contracts";
-import  CardERC721  from "./CardERC721"
-import {Grid, GridItem, Box, Text, Button} from "@chakra-ui/react"
-import useSWR from 'swr'
+import { Contract } from "@ethersproject/contracts";
+import { Grid, GridItem, Box, Text, Button } from "@chakra-ui/react"
 import { ethers } from 'ethers';
+import useSWR from 'swr'
 import { addressNFTContract, addressMarketContract }  from '../projectsetting'
+import  CardERC721  from "./CardERC721"
 
 interface Props {
-    addressContract: string,
     option: number
 }
 
 export default function ReadNFTMarket(props:Props){
   const abiJSON = require("abi/NFTMarketplace.json")
   const abi = abiJSON.abi
-  // const addressContract = props.addressContract
   const [items,setItems] = useState<[]>()
 
   const {  account, active, library} = useWeb3React<Web3Provider>()
@@ -32,11 +32,11 @@ useEffect( () => {
     if(!(active && account && library)) return
 
     // console.log(addressContract,abi,library)
-    const market:Contract = new Contract(props.addressContract, abi, library);
+    const market:Contract = new Contract(addressMarketContract, abi, library);
     console.log(market.provider)
     console.log(account)
 
-    library.getCode(props.addressContract).then((result:string)=>{
+    library.getCode(addressMarketContract).then((result:string)=>{
       //check whether it is a contract
       if(result === '0x') return
 
@@ -75,10 +75,8 @@ async function buyInNFTMarket(event:React.FormEvent) {
   if(!(active && account && library)) return
 
   //TODO make check whether item is available beforehand
-  // Import **
-  // Refesh page 
 
-  const market:Contract = new Contract(props.addressContract, abi, library.getSigner());
+  const market:Contract = new Contract(addressMarketContract, abi, library.getSigner());
   const auctionPrice = ethers.utils.parseUnits('1', 'ether')
   market.createMarketSale(
       addressNFTContract, 

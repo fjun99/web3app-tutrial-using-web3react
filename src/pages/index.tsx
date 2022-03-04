@@ -10,7 +10,6 @@ import { addressNFTContract, addressMarketContract }  from '../projectsetting'
 import ReadNFTMarket from 'components/ReadNFTMarket'
 
 const Home: NextPage = () => {
-  // const addressContract='0x5fbdb2315678afecb367f032d93f642f64180aa3'
 
   return (
     <>
@@ -40,17 +39,17 @@ const Home: NextPage = () => {
       <VStack>
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
           <Heading my={4}  fontSize='xl'>NFT Market - all</Heading>
-          <ReadNFTMarket addressContract={addressMarketContract} option={0} />
+          <ReadNFTMarket  option={0} />
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
           <Heading my={4}  fontSize='xl'>NFT Market - my brought</Heading>
-          <ReadNFTMarket addressContract={addressMarketContract} option={1} />
+          <ReadNFTMarket  option={1} />
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
           <Heading my={4}  fontSize='xl'>NFT Market - my created</Heading>
-          <ReadNFTMarket addressContract={addressMarketContract} option={2} />
+          <ReadNFTMarket  option={2} />
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
