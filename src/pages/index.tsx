@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </Box>
 
         <Box  mb={0} p={4} w='100%' borderWidth="1px" borderRadius="lg">
-          <Heading my={4}  fontSize='xl'>NFT Market - my brought</Heading>
+          <Heading my={4}  fontSize='xl'>NFT Market - my bought</Heading>
           <ReadNFTMarket  option={1} />
         </Box>
 
